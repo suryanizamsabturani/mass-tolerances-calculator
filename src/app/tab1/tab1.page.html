@@ -28,7 +28,7 @@
     <ion-row>
       <ion-col style="text-align: center;">
         <ion-item>
-          <ion-input label="Length (mm) :" placeholder="Enter sample length" 
+          <ion-input label="Length (mm) :" placeholder="Enter sample length" (keypress)="numberOnlyValidation($event)" 
           [(ngModel)]="sample_length" (ionInput)="calculate()"></ion-input>
         </ion-item>      
       </ion-col>
@@ -52,7 +52,8 @@
     <ion-row>
       <ion-col style="text-align: center;">
         <ion-item>
-          <ion-select label="Nominal Diameter (mm) :" label-placement="floating" fill="solid" [(ngModel)]="nominal_diameter">
+          <ion-select label="Nominal Diameter (mm) :" label-placement="floating" fill="solid" 
+          [(ngModel)]="nominal_diameter" (ionChange)="calculate()">
             <ion-select-option *ngFor="let nominal_diameter of nominal_diameter_list" 
             value="{{nominal_diameter}}">{{nominal_diameter}}</ion-select-option>
           </ion-select>
@@ -63,21 +64,25 @@
     <ion-row>
       <ion-col style="text-align: center;">
         <ion-item>
-          <ion-input style="color: red;" label="Nom. Mass/Metre (kg/m) :" value="" [readonly]="true"></ion-input>
-        </ion-item>      
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col style="text-align: center;padding-top: 60px;">
-        <ion-item>
-          <ion-input style="color: red;" label="Mass Tolerance (%) :" value="" [readonly]="true"></ion-input>
+          <ion-input class="nom-mass-per-metre" style="color: red;" label="Nom. Mass/Metre (kg/m) :" 
+          value="{{nominal_mass_per_metre}}" 
+          [readonly]="true"></ion-input>
         </ion-item>      
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col style="text-align: center;padding-top: 40px;">
+        <ion-item>
+          <ion-input class="mass-tolerance" style="color: red;font-weight: bolder;" label="Mass Tolerance (%) :" 
+          value="{{mass_tolerance}}" 
+          [readonly]="true"></ion-input>
+        </ion-item>      
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: center;padding-top: 30px;">
         <ion-button color="warning" (click)="reset()">Reset</ion-button>    
       </ion-col>
     </ion-row>
