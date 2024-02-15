@@ -1,0 +1,8 @@
+{
+  "name": "Mass Tolerances Calculator",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "63ca466e"
+}
