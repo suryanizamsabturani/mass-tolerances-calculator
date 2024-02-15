@@ -19,7 +19,7 @@
     <ion-row>
       <ion-col style="text-align: center;">
         <ion-item>
-          <ion-input label="Mass (g) :" placeholder="Enter sample weight" 
+          <ion-input label="Mass (g) :" placeholder="Enter sample weight" (keypress)="numberOnlyValidation($event)" 
           [(ngModel)]="sample_weight" (ionInput)="calculate()"></ion-input>
         </ion-item>      
       </ion-col>
@@ -28,7 +28,8 @@
     <ion-row>
       <ion-col style="text-align: center;">
         <ion-item>
-          <ion-input label="Length (mm) :" placeholder="Enter sample length" [(ngModel)]="sample_length"></ion-input>
+          <ion-input label="Length (mm) :" placeholder="Enter sample length" 
+          [(ngModel)]="sample_length" (ionInput)="calculate()"></ion-input>
         </ion-item>      
       </ion-col>
     </ion-row>
@@ -36,13 +37,10 @@
     <ion-row>
       <ion-col style="text-align: center;">
         <ion-item>
-          <ion-input style="color: red;" label="Mass/Metre (kg/m) :" value="" [readonly]="true"></ion-input>
+          <ion-input class="mass-per-metre" style="color: red;" label="Mass/Metre (kg/m) :" 
+          value="{{mass_per_metre}}" [readonly]="true"></ion-input>
         </ion-item>      
       </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col></ion-col>
     </ion-row>
 
     <ion-row>
@@ -71,11 +69,15 @@
     </ion-row>
 
     <ion-row>
-      <ion-col></ion-col>
+      <ion-col style="text-align: center;padding-top: 60px;">
+        <ion-item>
+          <ion-input style="color: red;" label="Mass Tolerance (%) :" value="" [readonly]="true"></ion-input>
+        </ion-item>      
+      </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col style="text-align: center;">
+      <ion-col style="text-align: center;padding-top: 40px;">
         <ion-button color="warning" (click)="reset()">Reset</ion-button>    
       </ion-col>
     </ion-row>
