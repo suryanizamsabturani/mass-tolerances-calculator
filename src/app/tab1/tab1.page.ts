@@ -7,6 +7,23 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  sample_weight: any;
+  sample_length: any;
+  nominal_diameter: any;
+  nominal_diameter_list: any = [];
+
+  constructor() {
+    this.nominal_diameter_list = ["10", "12", "16", "20", "25", "32"];
+  }
+
+  calculate() {
+    
+  }
+
+  reset() {
+    this.sample_weight = '';
+    this.sample_length = '';
+    this.nominal_diameter = null;
+  }
 
 }

@@ -1,17 +1,85 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Mass Tolerance Calculator
+      Mass Tolerance (%) Calculator
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Mass Tolerance Calculator</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Mass Tolerance (%) Calculator"></app-explore-container>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col style="text-align: center;font-weight: bold;">
+        <p>Calculate Mass per Metre run (kg/m)</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-item>
+          <ion-input label="Mass (g) :" placeholder="Enter sample weight" 
+          [(ngModel)]="sample_weight" (ionInput)="calculate()"></ion-input>
+        </ion-item>      
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-item>
+          <ion-input label="Length (mm) :" placeholder="Enter sample length" [(ngModel)]="sample_length"></ion-input>
+        </ion-item>      
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-item>
+          <ion-input style="color: red;" label="Mass/Metre (kg/m) :" value="" [readonly]="true"></ion-input>
+        </ion-item>      
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: center;font-weight: bold;">
+        <p>Calculate Mass Tolerance (%)</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-item>
+          <ion-select label="Nominal Diameter (mm) :" label-placement="floating" fill="solid" [(ngModel)]="nominal_diameter">
+            <ion-select-option *ngFor="let nominal_diameter of nominal_diameter_list" 
+            value="{{nominal_diameter}}">{{nominal_diameter}}</ion-select-option>
+          </ion-select>
+        </ion-item>     
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-item>
+          <ion-input style="color: red;" label="Nom. Mass/Metre (kg/m) :" value="" [readonly]="true"></ion-input>
+        </ion-item>      
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-button color="warning" (click)="reset()">Reset</ion-button>    
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
 </ion-content>
