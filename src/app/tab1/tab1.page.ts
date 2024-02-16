@@ -39,12 +39,14 @@ export class Tab1Page {
     this.sample_length === '' ? this.sample_length = '' : this.sample_length = this.sample_length;
 
     this.mass_per_metre = (this.sample_weight * 1000) / (this.sample_length * 1000);
+    this.mass_per_metre = this.mass_per_metre.toFixed(3);
 
     let masspermetre = document.getElementsByClassName('mass-per-metre') as HTMLCollectionOf<HTMLElement>;
 
     !isNaN(this.mass_per_metre) ? this.mass_per_metre = this.mass_per_metre : this.mass_per_metre = '';
-    this.mass_per_metre !== Infinity ? this.mass_per_metre = this.mass_per_metre : this.mass_per_metre = '';
+    this.mass_per_metre !== 'Infinity' ? this.mass_per_metre = this.mass_per_metre : this.mass_per_metre = '';
     this.mass_per_metre !== 0 ? this.mass_per_metre = this.mass_per_metre : this.mass_per_metre = '';
+    this.mass_per_metre !== '0.000' ? this.mass_per_metre = this.mass_per_metre : this.mass_per_metre = '';
 
     masspermetre[0].style.color = "red";
 
@@ -73,12 +75,14 @@ export class Tab1Page {
     this.nominal_mass_per_metre !== '' ? nommasspermetre[0].style.color = "green" : nommasspermetre[0].style.color = "red";
 
     this.mass_tolerance = ((this.mass_per_metre - this.nominal_mass_per_metre) / this.nominal_mass_per_metre) * 100;
+    this.mass_tolerance = this.mass_tolerance.toFixed(3);
 
     let masstolerance = document.getElementsByClassName('mass-tolerance') as HTMLCollectionOf<HTMLElement>;
 
     !isNaN(this.mass_tolerance) ? this.mass_tolerance = this.mass_tolerance : this.mass_tolerance = '';
-    this.mass_tolerance !== Infinity ? this.mass_tolerance = this.mass_tolerance : this.mass_tolerance = '';
+    this.mass_tolerance !== 'Infinity' ? this.mass_tolerance = this.mass_tolerance : this.mass_tolerance = '';
     this.mass_tolerance !== 0 ? this.mass_tolerance = this.mass_tolerance : this.mass_tolerance = '';
+    this.mass_per_metre !== '0.000' ? this.mass_per_metre = this.mass_per_metre : this.mass_per_metre = '';
 
     masstolerance[0].style.color = "red";
 
